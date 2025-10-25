@@ -1,63 +1,44 @@
-// Elements
-const startBtn = document.getElementById('startButton');
-const postcard = document.getElementById('postcard');
-const bookContainer = document.getElementById('bookContainer');
-const bookPages = document.querySelectorAll('.page');
-const finalScreen = document.getElementById('finalScreen');
+const openBtn = document.getElementById('openDiary');
+const diary = document.getElementById('diary');
+const birthdayBox = document.getElementById('birthdayBox');
+const pages = [document.getElementById('page1'), document.getElementById('page2'), document.getElementById('page3')];
+const nextBtn = document.getElementById('nextPage');
+const cakePopup = document.getElementById('cakePopup');
+const floatingEmojis = document.querySelector('.floating-emojis');
 const music = document.getElementById('birthdayMusic');
-const flipSound = document.getElementById('flipSound');
 
-// Particle canvas
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resize);
-resize();
+let currentPage = 0;
 
-// Particle class
-class Particle {
-  constructor() {
-    this.x = Math.random()*canvas.width;
-    this.y = canvas.height + 10;
-    this.vx = (Math.random()-0.5)*1.2;
-    this.vy = -Math.random()*2 -0.5;
-    this.size = Math.random()*15 +5;
-    this.alpha = Math.random()*0.7+0.3;
-    const emojis = ['💖','⭐','🎂','✨','🎈'];
-    this.emoji = emojis[Math.floor(Math.random()*emojis.length)];
+// Emoji types
+const emojis = ['❤️','💕','💖','💘','💞','💓','❣️','💗','🎂','💋','✨','🎉'];
+
+// Create floating emojis continuously
+function createFloatingEmoji(){
+  const span = document.createElement('span');
+  span.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+  span.style.left = Math.random()*90 + 'vw';
+  span.style.animationDuration = (8+Math.random()*5)+'s';
+  floatingEmojis.appendChild(span);
+  setTimeout(()=>floatingEmojis.removeChild(span),15000);
+}
+setInterval(createFloatingEmoji,300);
+
+// Open diary and start music
+openBtn.onclick = () => {
+  birthdayBox.style.display='none';
+  diary.style.display='block';
+  pages[currentPage].style.display='block';
+  music.play();
+};
+
+// Diary page navigation
+nextBtn.onclick = ()=>{
+  pages[currentPage].style.display='none';
+  currentPage++;
+  if(currentPage<pages.length){
+    pages[currentPage].style.display='block';
+  }else{
+    diary.style.display='none';
+    cakePopup.style.display='block';
   }
-  update(){ this.x += this.vx; this.y += this.vy; if(this.y < -50){ this.y = canvas.height+10; this.x = Math.random()*canvas.width; } }
-  draw(){ ctx.globalAlpha=this.alpha; ctx.font=this.size+"px serif"; ctx.fillText(this.emoji,this.x,this.y); ctx.globalAlpha=1; }
-}
-
-// Animate particles
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(particles.length<60) particles.push(new Particle());
-  particles.forEach(p=>{ p.update(); p.draw(); });
-  requestAnimationFrame(animate);
-}
-animate();
-
-// Start celebration
-startBtn.addEventListener('click', async ()=>{
-  postcard.classList.add('hidden');
-  bookContainer.classList.remove('hidden');
-  try{ await music.play(); }catch(e){ console.warn("Autoplay blocked"); }
-
-  let i=0;
-  const interval = setInterval(()=>{
-    if(i<bookPages.length){
-      flipSound.currentTime=0; flipSound.play();
-      bookPages[i].classList.add('flipped');
-      i++;
-    } else {
-      clearInterval(interval);
-      setTimeout(()=>{
-        bookContainer.classList.add('hidden');
-        finalScreen.classList.remove('hidden');
-      },800);
-    }
-  },1800);
-});
+};
