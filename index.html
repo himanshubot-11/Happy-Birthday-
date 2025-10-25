@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Postcard</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Postcard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background container -->
-  <div class="background">
-    <img src="shinchan-cake.png" alt="Shinchan holding cake" class="shinchan">
-    <canvas id="particle-canvas"></canvas>
+
+<!-- Background container -->
+<div class="background">
+  <img src="https://i.ibb.co/f0pZ5h7/shinchan-cake.png" alt="Shinchan holding cake" class="shinchan">
+  <canvas id="particle-canvas"></canvas>
+</div>
+
+<!-- Postcard -->
+<div class="postcard" id="postcard">
+  <h1>🎉 Happy Birthday! 🎉</h1>
+  <p>It was so special that we met on <strong>18 June 2024</strong>.</p>
+  <p>Your birthday is on <strong>26 October</strong>!</p>
+  <button id="startButton">Start Celebration 🎶</button>
+</div>
+
+<!-- Book / Flipbook -->
+<div class="book-container hidden" id="bookContainer">
+  <div class="book" id="book">
+    <div class="page page1">💫 The day we met — 18 June 2024 💫</div>
+    <div class="page page2">🎂 Your Birthday — 26 October 🎂</div>
+    <div class="page page3">💖 Happy Birthday to my favourite person 💖</div>
+    <div class="page page4">✨ With lots of love ❤️</div>
   </div>
+</div>
 
-  <!-- Postcard opening -->
-  <div class="postcard" id="postcard">
-    <h1 class="title">🎉 Happy Birthday! 🎉</h1>
-    <p class="subtitle">It was so special that we met on <strong>18 June 2024</strong>.<br>And your birthday is on <strong>26 October</strong>!</p>
-    <button id="startButton">Start Celebration 🎶</button>
-  </div>
+<!-- Final screen -->
+<div class="final-screen hidden" id="finalScreen">
+  <h2>💞 Happy Birthday 💞</h2>
+  <p>Wishing you a magical day!</p>
+</div>
 
-  <!-- Book -->
-  <div class="book-container hidden" id="bookContainer">
-    <div class="book" id="book">
-      <div class="page page1">💫 The day we met — 18 June 2024 💫</div>
-      <div class="page page2">🎂 Your Birthday — 26 October 🎂</div>
-      <div class="page page3">💖 Happy Birthday to my favourite person 💖</div>
-      <div class="page page4">✨ With lots of love ❤️</div>
-    </div>
-  </div>
+<!-- Audio -->
+<audio id="birthdayMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+<audio id="flipSound" src="https://www.soundjay.com/button/beep-07.mp3"></audio>
 
-  <!-- Final screen -->
-  <div class="final-screen hidden" id="finalScreen">
-    <h2>💞 Happy Birthday 💞</h2>
-    <p>Wishing you a magical day!</p>
-  </div>
-
-  <!-- Audio -->
-  <audio id="birthdayMusic" loop src="happy.mp3"></audio>
-  <audio id="flipSound" src="pageflip.mp3"></audio>
-
-  <script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
