@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday — Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas for particles -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <main class="stage" id="stage" role="main">
+    <header class="hero">
+      <h1 class="hero-title">🎉 Happy Birthday 🎉</h1>
+      <p class="hero-sub">A little surprise — tap <strong>Play</strong> to begin</p>
+    </header>
+
+    <!-- Play overlay (visual affordance) -->
+    <button id="playControl" class="play-control" aria-pressed="false" aria-label="Play surprise">
+      <span class="play-icon" id="playIcon"></span>
+      <span class="play-text">Play Surprise</span>
+    </button>
+
+    <!-- 3D Book -->
+    <section class="book-container hidden" id="bookWrap" aria-hidden="true">
+      <div class="book-shelf">
+        <!-- Left cover -->
+        <div class="cover cover-left" id="coverLeft" aria-hidden="true"></div>
+
+        <!-- Pages stack -->
+        <div class="book" id="book" role="button" tabindex="0" aria-label="Open book - click to turn pages">
+          <div class="page page-front" data-page="0">
+            <div class="page-content">💫 The day we met — June 18, 2024 💫</div>
+          </div>
+          <div class="page" data-page="1">
+            <div class="page-content">🎂 Your special day — October 26 🎂</div>
+          </div>
+          <div class="page" data-page="2">
+            <div class="page-content">💖 Happy Birthday to someone truly special 💖</div>
+          </div>
+          <div class="page page-back" data-page="3">
+            <div class="page-content">🎁 With all my love ❤️</div>
+          </div>
+        </div>
+
+        <!-- Right cover -->
+        <div class="cover cover-right" id="coverRight" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Final overlay -->
+    <section class="final-screen hidden" id="finalScreen" aria-hidden="true">
+      <div class="final-card">
+        <h2 class="final-title">HAPPY BIRTHDAY 💞</h2>
+        <p class="final-sub">Wishing you a day as wonderful as you are.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Audio elements (place your files here) -->
+  <audio id="music" preload="auto" src="happy.mp3"></audio>
+  <audio id="pageFlipAudio" preload="auto" src="pageflip.mp3"></audio>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
