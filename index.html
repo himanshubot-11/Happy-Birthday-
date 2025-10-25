@@ -3,46 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Postcard</title>
+<title>Happy Birthday!</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Background container -->
-<div class="background">
-  <img src="https://i.ibb.co/f0pZ5h7/shinchan-cake.png" alt="Shinchan holding cake" class="shinchan">
-  <canvas id="particle-canvas"></canvas>
-</div>
-
-<!-- Postcard -->
-<div class="postcard" id="postcard">
-  <h1>🎉 Happy Birthday! 🎉</h1>
-  <p>It was so special that we met on <strong>18 June 2024</strong>.</p>
-  <p>Your birthday is on <strong>26 October</strong>!</p>
-  <button id="startButton">Start Celebration 🎶</button>
-</div>
-
-<!-- Book / Flipbook -->
-<div class="book-container hidden" id="bookContainer">
-  <div class="book" id="book">
-    <div class="page page1">💫 The day we met — 18 June 2024 💫</div>
-    <div class="page page2">🎂 Your Birthday — 26 October 🎂</div>
-    <div class="page page3">💖 Happy Birthday to my favourite person 💖</div>
-    <div class="page page4">✨ With lots of love ❤️</div>
-  </div>
-</div>
-
-<!-- Final screen -->
-<div class="final-screen hidden" id="finalScreen">
-  <h2>💞 Happy Birthday 💞</h2>
-  <p>Wishing you a magical day!</p>
-</div>
+<!-- Floating emojis -->
+<div class="floating-emojis"></div>
 
 <!-- Audio -->
 <audio id="birthdayMusic" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
-<audio id="flipSound" src="https://www.soundjay.com/button/beep-07.mp3"></audio>
+
+<!-- Main container -->
+<div class="container">
+
+  <!-- Initial screen -->
+  <div class="birthday-box" id="birthdayBox">
+    <h1>HAPPY BIRTHDAY TO YOU 🎉</h1>
+    <button id="openDiary">OPEN</button>
+  </div>
+
+  <!-- Diary -->
+  <div class="diary" id="diary">
+    <div class="diary-cover" id="diaryCover">📖 Diary</div>
+    <div class="diary-page" id="page1"><p>27 October</p><p>Happy Birthday to a Special Person!</p></div>
+    <div class="diary-page" id="page2"><p>You are amazing and bring so much joy!</p></div>
+    <div class="diary-page" id="page3"><p>Thank you for staying with me for over a year from 18 June 2024!</p></div>
+    <button id="nextPage">Next</button>
+  </div>
+
+  <!-- Cake Pop-up -->
+  <div class="cake-popup" id="cakePopup">
+    <div class="cake">🎂<div class="flame">🔥</div></div>
+    <div class="cake-text"><p>Enjoy Your Day!</p><p>Happy Birthday Again 🎉</p></div>
+  </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>
